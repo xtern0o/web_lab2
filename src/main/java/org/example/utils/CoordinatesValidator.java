@@ -11,15 +11,9 @@ import java.util.function.Predicate;
  */
 public class CoordinatesValidator extends Validator<Coordinates> {
     public CoordinatesValidator() {
-        // TODO: Переделать под вариант
-        super(new Predicate<>() {
-            @Override
-            public boolean test(Coordinates coordinates) {
-                return (Set.of(-2F, -1.5F, -1F, -0.5F, 0F, 0.5F, 1F, 1.5F, 2F).contains(coordinates.x())) &&
-                        (-5 < coordinates.y() && coordinates.y() < 3) &&
-                        (Set.of(1F, 1.5F, 2F, 2.5F, 3F).contains(coordinates.r()));
-            }
-        });
+        super((coordinates) ->  (Set.of(-2F, -1.5F, -1F, -0.5F, 0F, 0.5F, 1F, 1.5F, 2F).contains(coordinates.x())) &&
+                                (-5 < coordinates.y() && coordinates.y() < 3) &&
+                                (Set.of(1F, 1.5F, 2F, 2.5F, 3F).contains(coordinates.r())));
     }
 
     /**

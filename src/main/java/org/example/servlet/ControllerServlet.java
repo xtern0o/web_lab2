@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.example.utils.RequestDataValidator;
 
 import java.io.IOException;
 
@@ -15,13 +16,11 @@ import java.io.IOException;
  */
 @WebServlet("/controller")
 public class ControllerServlet extends HttpServlet {
+    RequestDataValidator requestDataValidator = new RequestDataValidator();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String x = req.getParameter("x");
-        String y = req.getParameter("y");
-        String[] r = req.getParameterValues("r");
 
-        if (x != null && y != null && r != null) {
+        if (requestDataValidator.validate(req)) {
             req.getRequestDispatcher("/area-check").forward(req, resp);
             return;
         }
