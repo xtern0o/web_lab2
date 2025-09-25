@@ -4,7 +4,7 @@ import java.util.function.Predicate;
 
 /**
  * Абстрактный класс валидатора на предикате
- * @param <T>
+ * @param <T> валидируемый класс
  * @author maxkarn
  */
 public abstract class Validator<T> {

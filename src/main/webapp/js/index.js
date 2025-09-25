@@ -205,13 +205,14 @@ async function timedRemoveElement(node_selector) {
 // рисование точки по абсолютный координатам
 function drawDot(x, y, success) {
     const color = success ? "green" : "red";
-    const radius = 2;
+    const strokeColor = "black";
+    const radius = 5;
 
     ctx.beginPath();
     ctx.arc(x, y, radius, 0, 2 * Math.PI);
     ctx.fillStyle = color;
     ctx.fill();
-    ctx.strokeStyle = color;
+    ctx.strokeStyle = strokeColor;
     ctx.stroke();
 }
 

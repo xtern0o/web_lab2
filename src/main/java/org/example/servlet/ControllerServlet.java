@@ -9,6 +9,10 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
+/**
+ * Сервлет контроллер, принимающий запросы пользователя и делегирующий задачи другим сервлетам
+ * @author maxkarn
+ */
 @WebServlet("/controller")
 public class ControllerServlet extends HttpServlet {
     @Override

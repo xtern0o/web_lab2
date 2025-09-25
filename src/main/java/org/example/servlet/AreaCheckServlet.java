@@ -15,25 +15,26 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Сервлет, обрабатывающий полученные данные о точке и дающий ответ пользователю
+ * @author maxkarn
+ */
 @WebServlet("/area-check")
 public class AreaCheckServlet extends HttpServlet {
     CoordinatesValidator coordinatesValidator = new CoordinatesValidator();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        processRequest(req, resp);
+    }
+
+    private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         long time = System.currentTimeMillis();
         String currentTimeUTC = Instant.now().toString();
 
         List<Coordinates> coordinatesList = parseCoordinates(req);
-        if (coordinatesList == null) {
-            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Некорректные данные о точке");
-            return;
-        }
 
-        if (!coordinatesList.stream().allMatch((coordinates -> coordinatesValidator.validate(coordinates)))) {
-            resp.sendError(422, "Недопустимые числа в точке");
-            return;
-        }
+        if (!validateParsedData(coordinatesList, resp)) return;
 
         List<ResultEntry> newResultEntries = new ArrayList<>();
         coordinatesList.forEach(
@@ -46,6 +47,7 @@ public class AreaCheckServlet extends HttpServlet {
         );
 
         ServletContext servletContext = getServletContext();
+
         synchronized (servletContext) {
             List<ResultEntry> resultsList = (List<ResultEntry>) servletContext.getAttribute("resultsList");
             if (resultsList == null) resultsList = new ArrayList<>();
@@ -56,6 +58,20 @@ public class AreaCheckServlet extends HttpServlet {
         req.setAttribute("newResultEntries", newResultEntries);
 
         req.getRequestDispatcher("/result.jsp").forward(req, resp);
+    }
+
+    private boolean validateParsedData(List<Coordinates> coordinatesList, HttpServletResponse resp) throws IOException {
+        if (coordinatesList == null) {
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Некорректные данные о точке");
+            return false;
+        }
+
+        if (!coordinatesList.stream().allMatch((coordinates -> coordinatesValidator.validate(coordinates)))) {
+            resp.sendError(422, "Недопустимые числа в точке");
+            return false;
+        }
+
+        return true;
     }
 
     private List<Coordinates> parseCoordinates(HttpServletRequest req) {
