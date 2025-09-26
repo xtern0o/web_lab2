@@ -17,7 +17,7 @@ public class AreaCheckFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException {
         HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
         httpServletResponse.sendRedirect("index.jsp");
     }
@@ -27,3 +27,9 @@ public class AreaCheckFilter implements Filter {
         Filter.super.destroy();
     }
 }
+
+// в контексте сервлетов заведем мапу <String, Long> String - заголовок, Long - количество
+// на каждый запрос хаваем заголовки и сохранять в мапу
+// + нарисовать отдельную jsp на которой отрисовывается статистика
+
+// + docker

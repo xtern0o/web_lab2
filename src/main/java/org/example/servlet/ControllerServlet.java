@@ -1,6 +1,5 @@
 package org.example.servlet;
 
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -10,6 +9,7 @@ import org.example.utils.RequestDataValidator;
 
 import java.io.IOException;
 
+
 /**
  * Сервлет контроллер, принимающий запросы пользователя и делегирующий задачи другим сервлетам
  * @author maxkarn
@@ -17,6 +17,7 @@ import java.io.IOException;
 @WebServlet("/controller")
 public class ControllerServlet extends HttpServlet {
     private final RequestDataValidator requestDataValidator = new RequestDataValidator();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -28,4 +29,5 @@ public class ControllerServlet extends HttpServlet {
         resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Плохой запрос(");
 
     }
+
 }

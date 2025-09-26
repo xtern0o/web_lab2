@@ -6,7 +6,7 @@
             <img src="img/eagle-15084_256.gif" width="120">
             <img src="img/eagle-15084_256.gif" width="120">
             <img src="img/eagle-15084_256.gif" width="120">
-            <img src="img/eagle-15084_256.gif" width="120">
+            <a href="${pageContext.request.contextPath}/headers-count">Статистика по заголовкам</a>
             <img src="img/eagle-15084_256.gif" width="120">
             <img src="img/eagle-15084_256.gif" width="120">
             <img src="img/eagle-15084_256.gif" width="120">

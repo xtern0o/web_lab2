@@ -145,6 +145,15 @@ footer > .container {
     box-sizing: border-box;
 }
 
+footer a {
+    color: #fdf0d5;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
 .inline-gallery-container {
     display: flex;
     align-items: center;
@@ -335,6 +344,7 @@ table th {
 .table-row {
     color: black;
     font-weight: normal;
+    background: transparent;
 }
 
 #error-info-p {
@@ -410,4 +420,11 @@ input[type="checkbox"]:checked label {
 
 input[type="checkbox"]:checked + span {
     color: #780000;
+}
+
+.stats-page-container {
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
 }
