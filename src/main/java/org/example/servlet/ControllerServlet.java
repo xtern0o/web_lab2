@@ -16,7 +16,7 @@ import java.io.IOException;
  */
 @WebServlet("/controller")
 public class ControllerServlet extends HttpServlet {
-    RequestDataValidator requestDataValidator = new RequestDataValidator();
+    private final RequestDataValidator requestDataValidator = new RequestDataValidator();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

@@ -2,8 +2,6 @@ package org.example.utils;
 
 import jakarta.servlet.http.HttpServletRequest;
 
-import java.util.function.Predicate;
-
 /**
  * Валидатор данных из запроса. Проверяет их наличие
  */
