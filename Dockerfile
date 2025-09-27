@@ -9,6 +9,6 @@ EXPOSE 8080 9990
 ARG ADMIN_NAME="admin"
 ARG ADMIN_PASSWORD="admin"
 
-RUN /opt/jboss/wildfly/bin/add-user.sh -u $ADMIN_NAME -p $ADMIN_PASSWORD -s -m
+RUN /opt/jboss/wildfly/bin/add-user.sh -u $ADMIN_NAME -p $ADMIN_PASSWORD -s -r ManagementRealm
 
 CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
