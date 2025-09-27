@@ -4,6 +4,32 @@
 
 ![img1.png](src/main/webapp/img/eagle-15084_256.gif)
 
+## Сборка и деплой
+
+### Сборка
+
+```bash
+./gradlew build
+```
+```bash
+docker build \
+-t web_lab2 \
+--build-arg ADMIN_NAME=<enter your data> \
+--build-arg ADMIN_PASSWORD=<enter your data> \
+--no-cache \
+.
+```
+
+### Запуск контейнера
+```bash
+docker run \
+-p <ADMIN_PORT>:9990 \
+-p <HTTP_PORT>:8080 \
+-d \
+--name web-lab2 \
+web_lab2
+```
+
 ## Текст задания
 
 Разработать веб-приложение на базе сервлетов и JSP, определяющее попадание точки на координатной плоскости в заданную область.
@@ -32,3 +58,4 @@ AreaCheckServlet, осуществляющий проверку попадани
 Разработанное веб-приложение необходимо развернуть на сервере WildFly. Сервер должен быть запущен в standalone-конфигурации, порты должны быть настроены в соответствии с выданным portbase, доступ к http listener'у должен быть открыт для всех IP.
 
 ![img2.png](src/main/webapp/img/cowboy-395_256.gif)
+
