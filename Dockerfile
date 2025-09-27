@@ -7,7 +7,7 @@ EXPOSE 8080 9990
 # Данные для создания профиля админа
 # ВНИМАНИЕ! Введите ДРУГИЕ данные через --build-arg
 ARG ADMIN_NAME="admin"
-ARG ADMIN_PASSWRORD="admin"
+ARG ADMIN_PASSWORD="admin"
 
 RUN "/opt/jboss/wildfly/bin/add-user.sh" -a $ADMIN_NAME $ADMIN_PASSWORD
 
